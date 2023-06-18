@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import CitySearch from './CitySearch';
+import AirQualityCard from './components/AirQualityCard';
+import PollutantInfo from './components/PollutantInfo';
+import AirQualityTable from './components/AirQualityTable';
+
 
 function App() {
   const [airQualityData, setAirQualityData] = useState(null)
@@ -27,9 +32,23 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Air Quality index Checker</h1>
+    <div className='container'>
+      <h1 className='mt-5 mb-3'>Air Quality index Checker</h1>
       <CitySearch getAirQuality={getAirQuality} />
+      {error && (
+        <div className='alert alert-danger' role="alert">
+          {error}
+        </div>
+      )}
+      {airQualityData && (
+        //Air Quality Card Component
+        //Polluntant Info
+        <>
+        <AirQualityCard data={airQualityData}/>
+        <PollutantInfo pollutant={airQualityData.dominentpol}/>
+        <AirQualityTable />
+        </>
+      )}
     </div>
   );
 }
