@@ -46,9 +46,9 @@ function App() {
         <>
         <AirQualityCard data={airQualityData}/>
         <PollutantInfo pollutant={airQualityData.dominentpol}/>
-        <AirQualityTable />
         </>
       )}
+      <AirQualityTable />
     </div>
   );
 }
